@@ -46,19 +46,23 @@ function setupPage2() {
     lifeBreaks.sort(function cmp(a,b) {return a-b;}); // numeric, not lexicographic
 
     $("#page2").show();
-    var totalWidth = 900; // meh? 1024 is still popular I guess; borders add to this
     for (var i = 0; i < lifeBreaks.length; i++) {
         
-        var newBox = $("<span class='life_chunk'>" + lifeBreaks[i] +
-            "<textarea class='life_chunk_text' rows='5'></textarea></span>");
+        var newBox = $("<div class='life_chunk'>" +
+            "<div class='life_chunk_number'>" +
+                lifeBreaks[i] +
+            "</div>" + 
+            "<div class='life_chunk_text_box'>" +
+                "<textarea class='life_chunk_text'></textarea>" +
+            "</div>" +
+            "</div>");
         var numYears;
         if (i == lifeBreaks.length - 1) {
             numYears = age - lifeBreaks[i];
         } else {
             numYears = lifeBreaks[i+1] - lifeBreaks[i];
         }
-        width = (totalWidth / age) * numYears;
-        newBox.attr({"style": "width:" + width + "px"});
+        newBox.attr({"style": "height:" + (numYears * 30) + "px"});
         $("#boxes").append(newBox);
     }
 }
