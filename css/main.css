@@ -12,3 +12,13 @@
     color:blue;
     display:none;
 }
+
+.life_chunk {
+    display: inline-block;
+    border: 1px solid;
+    height: 200px;
+}
+
+.life_chunk_text {
+    width:100%;
+}
