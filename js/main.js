@@ -53,7 +53,7 @@ function setupPage2() {
                 lifeBreaks[i] +
             "</div>" + 
             "<div class='life_chunk_text_box'>" +
-                "<textarea class='life_chunk_text'></textarea>" +
+                "<textarea maxlength='140' class='life_chunk_text'></textarea>" +
             "</div>" +
             "</div>");
         var numYears;

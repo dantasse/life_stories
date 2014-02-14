@@ -26,11 +26,12 @@
     padding-right:5px;
 
 }
-.life_chunk_text {
+textarea.life_chunk_text {
     width:100%;
     height:100%;
     border:0;
     resize: none;
+    font-size: 18pt;
 }
 #page2done {
     margin-top:30px;
