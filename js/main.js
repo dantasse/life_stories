@@ -66,3 +66,16 @@ function setupPage2() {
         $("#boxes").append(newBox);
     }
 }
+
+$("#page2done").click(function() {
+    data = {"currentAge": age, "ages": [], "texts": []};
+    var textAreas = $("textarea.life_chunk_text");
+    for (var i = 0; i < textAreas.length; i++) {
+        data.ages[i] = lifeBreaks[i];
+        data.texts[i] = textAreas[i].value;
+    }
+    hideAll();
+    $("#page3").show();
+    $("#page3").text(data);
+    
+});

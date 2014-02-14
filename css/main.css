@@ -8,7 +8,6 @@
 }
 
 #page3 {
-    color:blue;
     display:none;
 }
 
@@ -32,4 +31,7 @@
     height:100%;
     border:0;
     resize: none;
+}
+#page2done {
+    margin-top:30px;
 }
