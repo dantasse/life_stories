@@ -1,5 +1,8 @@
 *.py[cod]
 
+# stuff for Heroku:
+venv
+
 # C extensions
 *.so
 
