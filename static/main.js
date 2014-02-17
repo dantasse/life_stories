@@ -7,6 +7,7 @@ function hideAll() {
 
 var age;
 var lifeBreaks = [];
+var lifeStory = {};
 
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -20,6 +21,7 @@ $("#page1done").click(function() {
         $("#age").select();
         return;
     }
+    $("#page1error").text("");
     hideAll();
     setupPage2();
 });
@@ -76,6 +78,14 @@ $("#page2done").click(function() {
     }
     hideAll();
     $("#page3").show();
-    $("#page3").text(data);
-    
+});
+
+$("#save").click(function() {
+    alert("ok, saving");
+    $("#saving").show();
+});
+
+$("#restart").click(function() {
+    hideAll();
+    $("#page1").show();
 });

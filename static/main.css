@@ -3,11 +3,7 @@
     color:red;
 }
 
-#page2 {
-    display:none;
-}
-
-#page3 {
+.hidden {
     display:none;
 }
 

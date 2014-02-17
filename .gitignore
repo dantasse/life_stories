@@ -2,6 +2,7 @@
 
 # stuff for Heroku:
 venv
+.env
 
 # C extensions
 *.so
