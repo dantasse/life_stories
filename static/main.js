@@ -70,19 +70,29 @@ function setupPage2() {
 }
 
 $("#page2done").click(function() {
-    data = {"currentAge": age, "ages": [], "texts": []};
+    lifeStory = {"currentAge": age, "ages": [], "texts": []};
     var textAreas = $("textarea.life_chunk_text");
     for (var i = 0; i < textAreas.length; i++) {
-        data.ages[i] = lifeBreaks[i];
-        data.texts[i] = textAreas[i].value;
+        lifeStory.ages[i] = lifeBreaks[i];
+        lifeStory.texts[i] = textAreas[i].value;
     }
+    // todo: when I send this as a JSON object these arrays get kind of mangled
+    // so instead of accessing ages[3], I can only access "ages[3]" (as one big
+    // string)... so next to do is to fix this.
     hideAll();
     $("#page3").show();
 });
 
 $("#save").click(function() {
-    alert("ok, saving");
     $("#saving").show();
+    $.ajax({
+        type: "POST",
+        url: "/save",
+        data: lifeStory,
+    }).done(function() {
+        $("#saving").hide();
+        $("#doneSaving").show();
+    });
 });
 
 $("#restart").click(function() {
