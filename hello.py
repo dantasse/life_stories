@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request
 import pymongo
-from pymongo import MongoClient
+import simplejson
 
 app = Flask(__name__)
 
@@ -11,8 +11,9 @@ app = Flask(__name__)
 # variable so that this line can pick it up.
 # note also that I probably shouldn't be using my "production" db for local
 # testing but what the heck this is a toy anyway
-client = MongoClient(os.environ['MONGOHQ_URL'])
-mongo_db = client.get_default_database()
+client = pymongo.MongoClient(os.environ['MONGOHQ_URL'])
+db = client.get_default_database()
+stories = db['stories']
 
 print "starting"
 @app.route('/')
@@ -21,9 +22,10 @@ def hello():
 
 @app.route('/save', methods=['GET', 'POST'])
 def save():
-    # print "you called save"
-    # print request.method
-    # print request.form
+    print "you called save"
+    story = request.get_json()
+    stories.insert(story)
+    print "saved"
     # print request.form['ages[3]']
     # print request.form['texts']
     # print request

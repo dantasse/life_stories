@@ -17,7 +17,7 @@ $("#page1done").click(function() {
     var ageStr = $("#age").val();
     age = parseInt(ageStr);
     if (isNaN(age) || age < 0 || age > 120) { // let's be optimistic here
-        $("#page1error").text("Stop it. How old are you?");
+        $("#page1error").text("Sorry, you have to enter a valid age.");
         $("#age").select();
         return;
     }
@@ -88,7 +88,8 @@ $("#save").click(function() {
     $.ajax({
         type: "POST",
         url: "/save",
-        data: lifeStory,
+        data: JSON.stringify(lifeStory),
+        contentType:"application/json; charset=utf-8"
     }).done(function() {
         $("#saving").hide();
         $("#doneSaving").show();
