@@ -76,9 +76,6 @@ $("#page2done").click(function() {
         lifeStory.ages[i] = lifeBreaks[i];
         lifeStory.texts[i] = textAreas[i].value;
     }
-    // todo: when I send this as a JSON object these arrays get kind of mangled
-    // so instead of accessing ages[3], I can only access "ages[3]" (as one big
-    // string)... so next to do is to fix this.
     hideAll();
     $("#page3").show();
 });
@@ -99,4 +96,5 @@ $("#save").click(function() {
 $("#restart").click(function() {
     hideAll();
     $("#page1").show();
+    $("#boxes").html("");
 });
