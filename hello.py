@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, request
 import pymongo
-import simplejson
 
 app = Flask(__name__)
 
@@ -22,14 +21,9 @@ def hello():
 
 @app.route('/save', methods=['GET', 'POST'])
 def save():
-    print "you called save"
     story = request.get_json()
     stories.insert(story)
-    print "saved"
-    # print request.form['ages[3]']
-    # print request.form['texts']
-    # print request
-    return "hello world"
+    return "ok"
 
 if __name__ == '__main__':
     app.run()
