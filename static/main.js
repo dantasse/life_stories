@@ -8,6 +8,7 @@ function hideAll() {
 var age;
 var lifeBreaks = [];
 var lifeStory = {};
+// data structure will be: {story:[{startAge:0, endAge:4, text: 'foo'}, ...]}
 
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -70,11 +71,16 @@ function setupPage2() {
 }
 
 $("#page2done").click(function() {
-    lifeStory = {"currentAge": age, "ages": [], "texts": []};
+    // lifeStory = {"currentAge": age, "ages": [], "texts": []};
+    lifeStory = {'story':[]}
     var textAreas = $("textarea.life_chunk_text");
-    for (var i = 0; i < textAreas.length; i++) {
-        lifeStory.ages[i] = lifeBreaks[i];
-        lifeStory.texts[i] = textAreas[i].value;
+    var numChunks = textAreas.length;
+    lifeBreaks.push(age);
+    for (var i = 0; i < numChunks; i++) {
+        lifeStory.story[i] = {'startAge': lifeBreaks[i], 'endAge': lifeBreaks[i+1],
+            'text': textAreas[i].value};
+        // lifeStory.ages[i] = lifeBreaks[i];
+        // lifeStory.texts[i] = textAreas[i].value;
     }
     hideAll();
     $("#page3").show();

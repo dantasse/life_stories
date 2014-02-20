@@ -35,3 +35,12 @@ textarea.life_chunk_text {
 #page2done {
     margin-top:30px;
 }
+
+/* Display page */
+.life_story_display {
+    border: 1px solid;
+    margin: 2px;
+    padding: 2px;
+}
+.life_chunk_display {
+}

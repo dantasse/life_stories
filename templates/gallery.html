@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tell me your life story</title>
 
-    <!-- Bootstrap -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="static/main.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,30 +16,17 @@
     <![endif]-->
   </head>
   <body>
-
-    <div id="page1">
-        How old are you?
-        <input type="text" id="age"></input>
-        <span id="page1error"></span>
-        <button type="button" id="page1done">Ok</button>
-    </div>
-    <div id="page2" class="hidden">
-        Tell me your life story.
-        <div id="boxes"></div>
-        <div>
-        <button id="page2done">Ok</button>
+    Here are all the stories:
+    {% for obj in all_stories %}
+        {{story}}
+        <div class='life_story_display'>
+            {% for chunk in obj.story %}
+            <div class='life_chunk_display'>
+                {{ chunk.startAge }} - {{ chunk.endAge }}: {{ chunk.text }}
+            </div>
+            {% endfor %}
         </div>
-    </div>
-    <div id="page3" class="hidden">
-        Thanks. Your story has been recorded.
-        <button type="button" id="save">Save this story and display it publicly</button>
-        <button type="button" id="restart">Tell another story</button>
-        <span id="saving" class="hidden">Saving...</span>
-        <span id="doneSaving" class="hidden">Done saving</span>
-        <a href="/view">See other stories</a>
-    </div>
-    
-
+    {% endfor %}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -49,3 +34,4 @@
     <script src="static/main.js"></script>
   </body>
 </html>
+

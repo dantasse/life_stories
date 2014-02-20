@@ -12,9 +12,7 @@ app = Flask(__name__)
 # testing but what the heck this is a toy anyway
 client = pymongo.MongoClient(os.environ['MONGOHQ_URL'])
 db = client.get_default_database()
-stories = db['stories']
 
-print "starting"
 @app.route('/')
 def hello():
     return render_template('index.html')
@@ -22,8 +20,14 @@ def hello():
 @app.route('/save', methods=['GET', 'POST'])
 def save():
     story = request.get_json()
-    stories.insert(story)
+    db['stories'].insert(story)
     return "ok"
+
+@app.route('/view')
+def view():
+    cursor = db['stories'].find()
+    all_stories = [story for story in cursor]
+    return render_template('gallery.html', all_stories=all_stories)
 
 if __name__ == '__main__':
     app.run()
