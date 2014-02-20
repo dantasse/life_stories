@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, request
-import pymongo
 
 app = Flask(__name__)
 
@@ -10,6 +9,7 @@ app = Flask(__name__)
 # variable so that this line can pick it up.
 # note also that I probably shouldn't be using my "production" db for local
 # testing but what the heck this is a toy anyway
+import pymongo
 client = pymongo.MongoClient(os.environ['MONGOHQ_URL'])
 db = client.get_default_database()
 
@@ -17,7 +17,7 @@ db = client.get_default_database()
 def hello():
     return render_template('index.html')
 
-@app.route('/save', methods=['GET', 'POST'])
+@app.route('/save', methods=['POST'])
 def save():
     story = request.get_json()
     db['stories'].insert(story)

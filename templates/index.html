@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tell me your life story</title>
+    <title>Tell your life story</title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -26,18 +26,24 @@
         <button type="button" id="page1done">Ok</button>
     </div>
     <div id="page2" class="hidden">
-        Tell me your life story.
+        Tell your life story.
         <div id="boxes"></div>
         <div>
         <button id="page2done">Ok</button>
         </div>
     </div>
     <div id="page3" class="hidden">
-        Thanks. Your story has been recorded.
-        <button type="button" id="save">Save this story and display it publicly</button>
-        <button type="button" id="restart">Tell another story</button>
-        <span id="saving" class="hidden">Saving...</span>
-        <span id="doneSaving" class="hidden">Done saving</span>
+        <div id="page3top">
+            Thanks.
+        </div>
+        <div>
+            <button type="button" id="save">Save this story and display it publicly</button>
+            <span id="saving" class="hidden">Saving...</span>
+            <span id="doneSaving" class="hidden">Done saving</span>
+        </div>
+        <div>
+            <button type="button" id="restart">Tell another story</button><br>
+        </div>
         <a href="/view">See other stories</a>
     </div>
     

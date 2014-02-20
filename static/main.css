@@ -1,5 +1,15 @@
 body {
     background-image:url('ricepaper_v3.png');
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    font-size: 18pt;
+}
+
+button {
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    font-size: 14pt;
+}
+input {
+    font-size: 16pt;
 }
 
 #page1error {
@@ -16,14 +26,14 @@ body {
 }
 .life_chunk_number {
     display:block;
-    margin-top:30px;
+    margin-top:36px;
+    padding-bottom:2px;
 }
 .life_chunk_text_box {
     border: 1px solid;
     height: 100%;
-    padding-bottom:5px;
-    padding-right:5px;
-
+    padding-bottom:4px;
+    padding-right:4px;
 }
 textarea.life_chunk_text {
     width:100%;
@@ -31,9 +41,16 @@ textarea.life_chunk_text {
     border:0;
     resize: none;
     font-size: 18pt;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+}
+textarea#answer {
+    resize: none;
+    width:45%;
+    font-size: 18pt;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 }
 #page2done {
-    margin-top:30px;
+    margin-top:44px;
 }
 
 /* Display page */
@@ -41,6 +58,7 @@ textarea.life_chunk_text {
     border: 1px solid;
     margin: 2px;
     padding: 2px;
+    width: 45%;
 }
 .life_chunk_display {
 }

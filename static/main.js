@@ -8,7 +8,14 @@ function hideAll() {
 var age;
 var lifeBreaks = [];
 var lifeStory = {};
-// data structure will be: {story:[{startAge:0, endAge:4, text: 'foo'}, ...]}
+// data structure will be: {story:[{startAge:0, endAge:4, text: 'foo'}, ...],
+//     question:"what...?", answer:"bar"}
+
+var questions = [
+    "Is there a part of this you would change?",
+    "What did you learn from this?",
+    "What will be the story of the next 5 years?",
+    ]
 
 function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -49,11 +56,13 @@ function setupPage2() {
     lifeBreaks.sort(function cmp(a,b) {return a-b;}); // numeric, not lexicographic
 
     $("#page2").show();
-    for (var i = 0; i < lifeBreaks.length; i++) {
+    var numChunks = lifeBreaks.length;
+    lifeBreaks.push(age);
+    for (var i = 0; i < numChunks; i++) {
         
         var newBox = $("<div class='life_chunk'>" +
             "<div class='life_chunk_number'>" +
-                lifeBreaks[i] +
+                "Age " + lifeBreaks[i] + " to " + lifeBreaks[i+1] + 
             "</div>" + 
             "<div class='life_chunk_text_box'>" +
                 "<textarea maxlength='140' class='life_chunk_text'></textarea>" +
@@ -71,7 +80,6 @@ function setupPage2() {
 }
 
 $("#page2done").click(function() {
-    // lifeStory = {"currentAge": age, "ages": [], "texts": []};
     lifeStory = {'story':[]}
     var textAreas = $("textarea.life_chunk_text");
     var numChunks = textAreas.length;
@@ -79,14 +87,33 @@ $("#page2done").click(function() {
     for (var i = 0; i < numChunks; i++) {
         lifeStory.story[i] = {'startAge': lifeBreaks[i], 'endAge': lifeBreaks[i+1],
             'text': textAreas[i].value};
-        // lifeStory.ages[i] = lifeBreaks[i];
-        // lifeStory.texts[i] = textAreas[i].value;
     }
     hideAll();
+
+    var newStoryHtml = "<div class='life_story_display'>" 
+    for (var i = 0; i < lifeStory.story.length; i++) {
+        var chunk = lifeStory.story[i];
+        newStoryHtml +=
+        "<div class='life_chunk_display'>" + 
+            chunk.startAge + " - " + chunk.endAge + ": " + chunk.text +
+        "</div>";
+    }
+    newStoryHtml += "</div>";
+    newStoryHtml += "<div id='question'>" + questions[randInt(0, questions.length)] + "</div>";
+    newStoryHtml += "<div><textarea maxlength='140' id='answer'></textarea></div>"
+    
+    $("#page3top").append(newStoryHtml);
     $("#page3").show();
 });
 
+
 $("#save").click(function() {
+    if (lifeStory.question == undefined) {
+        lifeStory.question = $("#question").text();
+    }
+    if (lifeStory.answer == undefined) {
+        lifeStory.answer = $("#answer").val();
+    }
     $("#saving").show();
     $.ajax({
         type: "POST",
