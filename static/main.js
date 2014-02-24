@@ -90,12 +90,18 @@ $("#page2done").click(function() {
     }
     hideAll();
 
-    var newStoryHtml = "<div class='life_story_display'>" 
+    var newStoryHtml = "<div class='life_story_display'>"; 
+    newStoryHtml += "<div style='float:right; font-size:12pt'>Save</div>";
     for (var i = 0; i < lifeStory.story.length; i++) {
         var chunk = lifeStory.story[i];
         newStoryHtml +=
-        "<div class='life_chunk_display'>" + 
+        "<div class='life_chunk_display' style='clear:both;'>" + 
+            "<div style='float:left;'>" +
             chunk.startAge + " - " + chunk.endAge + ": " + chunk.text +
+            "</div>" +
+            "<div style='float:right;'>" +
+                "<input type='checkbox' checked id='chunk_checkbox_" + chunk.startAge + "'></input>" + 
+            "</div>" + 
         "</div>";
     }
     newStoryHtml += "</div>";
@@ -113,6 +119,13 @@ $("#save").click(function() {
     }
     if (lifeStory.answer == undefined) {
         lifeStory.answer = $("#answer").val();
+    }
+    
+    for (var i = 0; i < lifeStory.story.length; i++) {
+        var checkbox_name = '#chunk_checkbox_' + lifeStory.story[i].startAge;
+        if (!$(checkbox_name).prop('checked')) {
+            lifeStory.story[i].text = '(private)';
+        }
     }
     $("#saving").show();
     $.ajax({

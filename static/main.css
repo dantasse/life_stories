@@ -7,9 +7,17 @@ body {
 button {
     font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
     font-size: 14pt;
+    margin-left: auto;
+    margin-right: auto;
 }
 input {
     font-size: 16pt;
+}
+
+#everything {
+    margin-left: auto;
+    margin-right: auto;
+    width:500px;
 }
 
 #page1error {
@@ -21,7 +29,6 @@ input {
 }
 
 .life_chunk {
-    width: 45%;
     text-align: center;
 }
 .life_chunk_number {
@@ -45,7 +52,7 @@ textarea.life_chunk_text {
 }
 textarea#answer {
     resize: none;
-    width:45%;
+    width: 100%;
     font-size: 18pt;
     font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 }
@@ -58,7 +65,7 @@ textarea#answer {
     border: 1px solid;
     margin: 2px;
     padding: 2px;
-    width: 45%;
+    padding-bottom: 28px;
 }
 .life_chunk_display {
 }
