@@ -15,6 +15,8 @@ var questions = [
     "Is there a part of this you would change?",
     "What did you learn from this?",
     "What will be the story of the next 5 years?",
+    "How is this different from the story you usually tell?",
+    "Is there another story you could have told instead?",
     ]
 
 function isNumber(n) {
@@ -143,4 +145,5 @@ $("#restart").click(function() {
     hideAll();
     $("#page1").show();
     $("#boxes").html("");
+    $("#page3top").html("Thanks.");
 });
